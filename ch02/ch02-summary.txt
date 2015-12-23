@@ -1,0 +1,42 @@
+ch02  数据转换函数小结
+
+//将字符串转换成浮点数
+double atof(const char *nptr)
+
+//将字符串转换成整型数
+int atoi(const char *nptr)
+
+//将字符串转换成长整型数
+long atol(const char *nptr)
+
+//将浮点数转换成字符串，四舍五入，不带符号和小数点
+char *ecvt(double number, int ndigits, int *decpt, int *sign)
+
+//将浮点数转换成字符串，四舍五入，不带符号和小数点                                    
+char *fcvt(double number, int ndigits, int *decpt, int *sign)
+
+//将浮点数抓换成字符串，带符号和小数点                                    
+char *gcvt(double number, size_t ndigits, char *buf)
+
+//将字符串转换成浮点型数
+double strtod(const char *nptr, char **endptr)
+
+//将字符串转换成长整型数
+long int strtol(const char *nptr, char **endptr, int base)
+
+//将字符串转换成无符号长整型数
+unsigned long int strtoul(const char *nptr, char **endptr, int base)
+
+//将整型数转换成合法的ascii字符
+int toascii(int c);
+
+//将大写字母转换成小写字母
+int tolower(int c);
+
+//将小写字母转换成大写字母
+int toupper(int c);
+
+
+
+
+                                    
