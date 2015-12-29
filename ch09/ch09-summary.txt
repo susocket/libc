@@ -1,0 +1,50 @@
+ch09 数据结构函数
+
+//二元搜索
+void *bsearch(const void *key, const void *base, size_t nmemb, size_t size,
+    int (*compar)(const void *, const void *));
+
+//建立哈希表
+int hcreate(unsigned nel);
+
+//删除哈希表
+void hdestroy(void);
+
+//哈希表搜索
+ENTRY *hsearch(ENTRY item, ACTION action);
+
+//加入一项目至队列中
+void insque(struct qelem *elem, struct qelem *prev);
+
+//线性搜索
+void *lfind(const void *key, const void *base, size_t *nmemb, sizt_t size,
+    int (*compar)(const void *, const void *));
+
+//线性搜索
+void *lsearch(const void *key, const void *base, size_t *nmemb, sizt_t size,
+    int (*compar)(const void *, const void *));
+
+//利用快速排序法排列数组
+void qsort(void *base, size_t nmemb, size_t size, int (*compar)(const void *,
+    const void *));
+
+//从列表中删除一项目
+void remque(struct qelem *elem);
+
+//从二叉树中删除数据
+void *tdelete(const void *key, void **rootp, int (*compar)(const void *,
+    const void *));
+
+//搜索二叉树
+void *tfind(const void *key, const void **rootp, int (*compar)(const void *,
+    const void *));
+
+//建立或搜索二叉树
+void *tsearch(const void *key, const void **rootp, int (*compar)(const void *,
+    const void *));
+
+//走访二叉树
+void twalk(const void *root, void (*action)(const void *nodep, const VISIT which,
+    const int depth));
+
+
