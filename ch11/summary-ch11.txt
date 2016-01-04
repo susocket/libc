@@ -1,0 +1,57 @@
+ch11 初级I/O函数
+
+//关闭文件
+int close(int fd);
+
+//建立文件
+int create(const char *pathname, mode_t mode);
+等价于：
+int open(const char *pathname, (O_CREAT | O_WRONLY | O_TRUNC));
+
+//复制文件描述符
+int dup(int oldfd);
+函数说明：dup()用来复制参数oldfd所指的文件描述符，并将新的文件描述符返回。此新的文件
+描述符和参数oldfd指的是同一个文件，共享所以的锁定、读写位置和各项权限与旗标（flags）。
+例如：当利用lseek()对某个文件描述符作用时，另一个文件描述符的位置也会跟着改变。不过，
+文件描述符之间不共享close-on-exec旗标。
+
+//复制文件描述符
+int dup2(int oldfd, int newfd);
+函数说明：dup2()用来复制参数oldfd所指的文件描述符，并将它拷贝至参数newfd后一块返回。
+若参数newfd为一已打开的文件描述符，则newfd所指的文件会先被关闭。dup2()所复制的文件描述符
+与原来的文件描述符共享各种文件状态。
+
+//文件描述符操作
+int fcntl(int fd, int cmd);
+int fcntl(int fd, int cmd, long arg);
+int fcntl(int fd, int cmd, struct flock *lock);
+函数说明：fcntl()用来操作文件描述符的一些特性。
+
+//锁定文件或解除锁定
+int flock(int fd, int operation);
+函数说明：flock()会依参数operation所指定的方式对参数fd所指的文件描述符做各种锁定或
+解除锁定的动作。此函数只能锁定整个文件，不能锁定文件的某一个区段。
+
+//将缓冲区写入磁盘
+int fsync(int fd);
+函数说明：fsync()负责将参数fd所指的文件数据，由系统缓冲区写入磁盘，以确保数据同步。
+
+//移动文件读写位置
+off_t lseek(int fd, off_t offset, int whence);
+
+//建立唯一的临时文件
+int mkstemp(char *template);
+
+//打开文件
+int open(const char *pathname, int flags);
+int open(const char *pathname, int flags, mode_t mode);
+
+//读取文件
+ssize_t read(int fd, void *buf, size_t count);
+
+//将缓冲区写入磁盘
+int sync(void);
+
+//将数据写入已打开的文件
+ssize_t write(int fd, const void *buf, size_t count);
+
